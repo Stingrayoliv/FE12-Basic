@@ -1,0 +1,32 @@
+li, p{
+    color:green;
+}
+#introdaction_header{
+    border-color: darkred;
+    border-width: 2px;
+    border-style: solid;
+}
+.introdaction_header {
+    font-family: "Arial Narrow";
+}
+[href='https://yandex.com']{
+display: block;
+border-bottom: 2px black solid;
+border-top: 2px red solid;
+border-left: 2px orange solid;
+border-right: 2px cyan solid;
+}
+[x=y]{
+    border: 4px black solid;
+    border-radius: 5px;
+}
+
+p.footer{
+    background-color: black;
+    color: white;
+}
+
+div img {
+    width: 280px;
+    height: auto;
+}
