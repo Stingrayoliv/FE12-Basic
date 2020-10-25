@@ -9,6 +9,10 @@ table.table {
     margin-top: 2em;
 }
 
+.input-group textarea{
+    height: 20em;
+}
+
 /*.invalid-feedback {*/
 /*    display: block;*/
 /*}*/
