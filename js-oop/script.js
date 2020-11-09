@@ -55,3 +55,26 @@ const person2 = new Person('Jack', 'Russel', 'terrier');
 Person.prototype.greetOtherPerson = function(person) {
     return person.bio() + ' greets me ' + this.bio()
 }
+
+function Address(street, houseNumber, city, country, zip){
+    this.street=street;
+    this.housenumber=houseNumber;
+    this.city=city;
+    this.zip=zip;
+}
+Person.prototype.address=new Address();
+Person.prototype.sayAddress=function (){
+    return this.address.street+' '+this.address.city+' , '+this.address.street+" "+this.address.housenumber+
+        this.address.zip;
+}
+const pushkin = new Person('Alexandr', 'Pushkin', 'male');
+console.log(pushkin.sayAddress());
+
+pushkin.address['street']='Street1';// можем обратитьс через квадратные скобки
+pushkin.address.housenumber='12';
+pushkin.address.city='St. Petersburg';
+pushkin.address.country='Russia';
+pushkin.address.zip='12345';
+
+//Also possible
+//pushkin.address=new Address('Street1', '12', 'St. Petersburg', 'Russia', '12345');
