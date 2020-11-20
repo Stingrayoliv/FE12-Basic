@@ -24,8 +24,8 @@ document.body.appendChild(canvas);
 hero.x=canvas.width/2;
 hero.y=canvas.height/2;
 
-monster.x=monster.image.width+(Math.random()*(canvas.width-monster.image.width*2));
-monster.y=monster.image.height+(Math.random()*(canvas.height-monster.image.height*2));
+monster.x=monster.image.width+(Math.random()*(canvas.width-monster.image.width*3));
+monster.y=monster.image.height+(Math.random()*(canvas.height-monster.image.height*3));
 
 //еще один вариант запуска события
 background.image.onload=()=>ctx.drawImage(background.image, 0, 0); //onload() запускается таким образом, когда
@@ -36,7 +36,7 @@ window.addEventListener('keydown', (event)=>{
     if (event.key==="ArrouUp"){
         hero.moveUp();
     }
-    if (event.key==="ArrouUp"){
+    if (event.key==="ArrowDown"){
         hero.moveDown();
     }
     if (event.key==="ArrouRight"){
@@ -46,10 +46,12 @@ window.addEventListener('keydown', (event)=>{
         hero.moveLeft();
     }
 });
-
-window.addEventListener('keyup', (event)=>{
+window.addEventListener('keydown', (event)=>{
     console.log(event);
+    hero.x+=1;
+    hero.y+=1;
 });
+
 
 const gameCycle=function (){
     //console.log(gameCycle); // чтобы посмотреть
@@ -60,12 +62,8 @@ const gameCycle=function (){
 }
 
 window.requestAnimationFrame(gameCycle);
-
-
 // setTimeout(()=>{
 //     background.render(ctx);
 //     hero.render(ctx);
 //     monster.render(ctx);
 // }, 1500);
-
-
