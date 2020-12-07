@@ -1,15 +1,21 @@
-function createHero(imageUrl, canvas) {
-    const hero = new GameObject(imageUrl);
+class Hero extends MovableGameObject {
+    #canvasWidth;
+    #canvasHeight
 
-    Object.assign(hero, MovableGameObjectPrototype);
-
-    hero.reset = function() {
-        this.x = canvas.width / 2;
-        this.y = canvas.height / 2;
-        this.speed = 0.1;
+    constructor(imageUrl, canvas) {
+        super(imageUrl);
+        this.#canvasWidth = canvas.width;
+        this.#canvasHeight = canvas.height;
     }
 
-    hero.update = function(delta) {
+    reset() {
+        this.x = this.#canvasWidth / 2;
+        this.y = this.#canvasHeight / 2;
+        this.speed = 0.1;
+        this.reset();
+    }
+
+    update(delta) {
         if (keysPressed["ArrowUp"]) {
             this.moveUp(delta);
         }
@@ -30,8 +36,4 @@ function createHero(imageUrl, canvas) {
             this.speedDown();
         }
     }
-
-    hero.reset();
-
-    return hero;
 }

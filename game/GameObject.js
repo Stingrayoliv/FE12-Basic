@@ -9,7 +9,7 @@ function GameObject(imageUrl) {
     }
 }
 
-GameObject.prototype.render = function(ctx) {
+GameObject.prototype.render = function (ctx) {
     if (this.ready) {
         ctx.drawImage(this.image, this.x, this.y);
     }
@@ -27,7 +27,7 @@ const MovableGameObjectPrototype = {
         this.y = Math.abs(this.y % canvas.height + this.speed * time);
     },
     moveLeft: function (time) {
-        this.x =  this.x - this.speed * time;
+        this.x = this.x - this.speed * time;
         if (this.x < 0) {
             this.x = canvas.width - this.x;
         }
@@ -45,4 +45,3 @@ const MovableGameObjectPrototype = {
         console.log(this.speed);
     }
 }
-
