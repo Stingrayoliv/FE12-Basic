@@ -1,31 +1,26 @@
-//Simple promise example;
-// const somePromise = new Promise((resolve) => {
-//     setTimeout(() => resolve("Hello from promise"), 5000)
-// });
-//
-// somePromise
-//     .then((str) => console.log(str))
-//
-// console.log("Hello from usual js script");
+const $p = document.getElementsByTagName('p')[0];
+counter=new CounterObject();
+counter.start();
 
-const $p = document.getElementsByClassName('p')[0];
-let i = 0;
-const handlerId = setInterval(() => {
-    i++;
-    $p.innerText = i;
-}, 1000);
+let result=function (){
+    let randomNumber=Math.floor(Math.random()*(10-1))+1;
+    if (randomNumber<6){
+        return true;
+    }else{
+        return false;
+    }
+}
 
-//clearInterval(handlerId);
-let result = true;
-let delay = 5000;
-
+let delay = (Math.floor(Math.random()*(5-1))+1)*1000; // Generate randomly: from 1000 to 5000 with 1000 step
+console.log(delay)
 
 const promise = new Promise((resolve, reject) => {
-    if (result) {
+    if (result()) {
         setTimeout(() => {
             resolve('Hello');
-        }, delay)
-    } else {
+        }, delay);
+    }
+    else {
         setTimeout(() => {
             reject('Error')
         }, delay)
@@ -34,34 +29,13 @@ const promise = new Promise((resolve, reject) => {
 
 promise
     .then(response => {
-        clearInterval(handlerId);
+        counter.stop(); // replace with counter.stop()
         $p.innerText = response;
+        $p.style.color="green";
     })
     .catch(reason => {
-        clearInterval(handlerId);
+        counter.stop(); // replace with counter.stop()
         $p.innerText = reason;
+        $p.style.color="red";
     })
-    .finally(()=>console.log('Request is finished'))
-
-
-//     setTimeout(() => resolve("Hello from promise"), 5000)
-// });
-
-
-// let time= Math.floor(Math.random()*(5000-1000))+1000;
-// console.log(time);
-// const somePromise = new Promise((resolve, reject) => {
-//     setTimeout(() => resolve("Hello"), time);
-//     setTimeout(() => reject(new Error("Error")), time);
-// });
-//
-//
-// promise
-//     .then(
-//         result => {
-//
-//         },
-//         error => {
-//
-//         }
-//     );
+    .finally(() => console.log('Request is finished'));//     );
